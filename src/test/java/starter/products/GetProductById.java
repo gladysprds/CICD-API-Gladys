@@ -36,7 +36,7 @@ public class GetProductById {
         Response response = SerenityRest.lastResponse();
         String productDetail = response.body().path("data.Name");
         try (FileWriter file = new FileWriter("src//test//resources//filejson//productDetail.json")) {
-            file.write(productDetail);
+            file.write(productDetail.toString());
             file.flush();
         } catch (IOException e) {
             e.printStackTrace();
