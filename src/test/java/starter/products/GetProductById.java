@@ -26,7 +26,7 @@ public class GetProductById {
     public void requestGetProductById()throws Exception{
        Integer idProduct = Integer.valueOf(FileUtils.readFileToString(new File(System.getProperty("user.dir") + "//src//test//resources//filejson//idProduct.json"), StandardCharsets.UTF_8));
 
-        given().pathParam("idProduct",idProduct.toString())
+        given().pathParam("idProduct",idProduct)
                 .when().get(endpointWithProductID());
     }
 
