@@ -26,7 +26,7 @@ public class GetProductById {
     public void requestGetProductById()throws Exception{
        Integer idProduct = Integer.valueOf(FileUtils.readFileToString(new File(System.getProperty("user.dir") + "//src//test//resources//filejson//idProduct.json"), StandardCharsets.UTF_8));
 
-        given().pathParam("idProduct",idProduct)
+        given().pathParam("idProduct",idProduct.toString())
                 .when().get(endpointWithProductID());
     }
 
@@ -36,7 +36,7 @@ public class GetProductById {
         Response response = SerenityRest.lastResponse();
         String productDetail = response.body().path("data.Name");
         try (FileWriter file = new FileWriter("src//test//resources//filejson//productDetail.json")) {
-            file.write(productDetail.toString());
+            file.write(productDetail);
             file.flush();
         } catch (IOException e) {
             e.printStackTrace();
